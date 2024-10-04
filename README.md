@@ -20,9 +20,9 @@ GRANT CONNECT ON DATABASE surecam TO surecam;
 There is a single test file public/permutation_test/permutation01.txt that includes the same contents as the example file. All rake tasks generate respective command-line output
 | COMMAND  | Description |
 | ------------- | ------------- |
-|<sub><sup>`rake permutations:import_files`</sup></sub>| processes all files located in the `public/permutation_test/*` directory |
-|<sub><sup>`rake permutations:read_input -- file=permutation01.txt`</sup></sub>| processes a single input file in the `public/permutation_test/*` directory (hint: you can upload additional files to this directory that match the same format) |
-|<sub><sup>`rake permutations:generate_random`</sup></sub>| generates random string data to determine all permutations|
+|<sub>`rake permutations:import_files`</sub>| processes all files located in the `public/permutation_test/*` directory |
+|<sub>`rake permutations:read_input -- file=permutation01.txt`</sub>| processes a single input file in the `public/permutation_test/*` directory (hint: you can upload additional files to this directory that match the same format) |
+|<sub>`rake permutations:generate_random`</sub>| generates random string data to determine all permutations|
 
 ## RAILS APP ROUTES
 
