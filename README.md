@@ -4,20 +4,21 @@ This repository consists of a Ruby on Rails v7 RESTful API that intends to satis
 
 ## POSTGRES DB SETUP COMMANDS
 ```
-sudo su - postgres
+$ sudo su - postgres
+$ psql
 
-CREATE USER surecam WITH PASSWORD 'surecam';
-ALTER USER surecam CREATEDB;
+postgres=#  CREATE USER surecam WITH PASSWORD 'surecam';
+postgres=#  ALTER USER surecam CREATEDB;
 
-CREATE DATABASE surecam;
-ALTER DATABASE surecam OWNER TO surecam;
+postgres=# CREATE DATABASE surecam;
+postgres=# ALTER DATABASE surecam OWNER TO surecam;
 
-GRANT CONNECT ON DATABASE surecam TO surecam;
+postgres=# GRANT CONNECT ON DATABASE surecam TO surecam;
 ```
 
 ## PERMUTATION RAKE TASKS
 
-There is a single test file `public/permutation_test/permutation01.txt` that includes the same contents as the example file. All rake tasks generate respective command-line output
+There is a single test file `public/permutation_test/permutation01.txt` provided includes the same contents as the example file shown in the coding challenge. All rake tasks generate respective command-line output
 | COMMAND  | Description |
 | ------------- | ------------- |
 |<sub>`rake permutations:import_files`</sub>| processes all files located in the `public/permutation_test/*` directory |
@@ -26,7 +27,7 @@ There is a single test file `public/permutation_test/permutation01.txt` that inc
 
 ## RAILS APP ROUTES
 
-This RESTful API uses a `TodoClient.rb` to interact with the external [JSON Placeholder TODOs API](https://jsonplaceholder.typicode.com/todos) and then provides basic functionality for creating users who can register, login/logout and then create posts and comment on posts. Respective user interaction histories are provided at the user endpoints.
+This RESTful API uses a `TodoClient.rb` to interact with the external [JSON Placeholder TODOs API](https://jsonplaceholder.typicode.com/todos) and then provides basic functionality for creating users who can register, login/logout and then create posts & comments. Stored user interaction histories can be consumed at the `api/v1/user` endpoints.
 
 ```
          Prefix Verb     URI Pattern                    Controller#Action
@@ -50,4 +51,4 @@ api_v1_comments POST     /api/v1/comments(.:format)     api/v1/comments#create {
 
 ## POSTMAN COLLECTION
 
-This repository includes a [Postman Collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SURECAM.postman_collection.json) (v2.1.0) with paramterized requests that can be imported through the [Postman API Platform](https://www.postman.com/downloads/) desktop application. This collection enables one to interact seamelessly with the basic surecam-api-test RESTful API functionality.
+This repository includes a [Postman Collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SURECAM.postman_collection.json) (v2.1.0) with paramterized requests that can be imported through the [Postman API Platform](https://www.postman.com/downloads/) desktop application. This collection enables one to interact seamelessly with the basic surecam-api-test RESTful API functionality using a `Bearer <token>`.
