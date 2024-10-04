@@ -10,9 +10,6 @@ module Api
         if user.present? && user.authenticate(params[:password])
 
           session[:user_id] = user.id
-
-          # for future use
-          session[:jwt] = JWT.encode({user_id: user.id}, ENV['JWT_SECRET'], 'HS256')
   
           response[:message] = "Successfully logged in"
 
