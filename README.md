@@ -1,6 +1,6 @@
 # README
 
-This repository is to satisfy the requirements in the [Surecam Coding Challenge](https://github.com/surecam-01/surecam-api-test/blob/main/public/SureCam-Coding-test.pdf).
+This repository is to satisfy the requirements in the [Surecam Coding Challenge](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SureCam-Coding-test.pdf).
 
 ## POSTGRES SETUP COMMANDS
 ```
@@ -49,4 +49,4 @@ api_v1_comments POST     /api/v1/comments(.:format)     api/v1/comments#create {
 
 ## POSTMAN COLLECTION
 
-This repository includes a [Postman Collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/SURECAM.postman_collection.json) (v2.1.0) with requests that can be imported so that one can interact readily with the basic surecam-api-test RESTful API functionality.
+This repository includes a [Postman Collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SURECAM.postman_collection.json) (v2.1.0) with requests that can be imported so that one can interact readily with the basic surecam-api-test RESTful API functionality.
