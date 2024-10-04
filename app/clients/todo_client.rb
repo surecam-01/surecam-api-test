@@ -1,0 +1,80 @@
+class TodoClient
+  include HTTParty
+  
+  BASE_URL = "http://jsonplaceholder.typicode.com/todos"
+  ID_MATCH = /^[0-9]*$/ # allowing for any number
+  
+  def create(params)
+    begin
+      todo = Todo.new.attributes
+      todo.delete("id")
+  
+      todo["title"] = params["title"]
+      todo["userId"] = params["userId"]
+      todo["completed"] = params["completed"]
+    
+      if ID_MATCH.match?(todo["userId"].to_s) && ["true", "false"].include?(params["completed"])
+        HTTParty.post(BASE_URL, todo)
+  
+        {
+          :base_url => BASE_URL,
+          :status => Status::CODES[200],
+          :code => 200,
+          :message => "Todo created",
+          :todo => todo
+        }
+
+      else
+        raise StandardError, "data integrity error"
+      end
+    rescue Exception => e
+
+      {
+        :base_url => BASE_URL,
+        :status => Status::CODES[422],
+        :code => 422,
+        :message => "Todo not created",
+        :todo => todo,
+        :details => e,
+        :backtrace => e.backtrace
+      }
+
+    end
+  
+  
+    
+  end
+  
+  # despite different prefix, end controller method name with familiar action
+  def recent_200
+    HTTParty.get(BASE_URL)
+  end
+  
+  def delete(id)
+  
+    begin
+
+      if !ID_MATCH.match?(id.to_s)
+        raise StandardError, "id not a number"
+      end
+  
+      HTTParty.delete("#{BASE_URL}/#{id}")
+  
+      { 
+        :base_url => BASE_URL,
+        :status => Status::CODES[202],
+        :code => 202,
+        :message => "Todo with id (#{id}) deleted"
+      }
+    rescue Exception => e
+      { 
+        :base_url => BASE_URL,
+        :status => Status::CODES[405],
+        :code => 405,
+        :message => "Todo with id (#{id}) not deleted",
+        :details => e
+      }
+    end
+  end
+  
+  end

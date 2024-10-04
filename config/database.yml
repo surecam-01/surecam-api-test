@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  database: <%= ENV['RAILS_DB'] %>
+  user: <%= ENV['RAILS_USER'] %>
+  pass: <%= ENV['RAILS_PASS'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
