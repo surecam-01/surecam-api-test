@@ -60,16 +60,6 @@ module Api
         end
 
       end
-
-      private
-        def no_session_variables?(session)
-          session.keys.each do |key|
-            if Session::SESSION_VARIABLES.include?(key)
-              return false
-            end
-          end
-          return true
-        end
     end
   end
 end
