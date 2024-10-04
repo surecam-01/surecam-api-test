@@ -25,7 +25,7 @@ There is a single test file public/permutation_test/permutation01.txt that inclu
 
 `rake permutations:generate_random` - generates random string data to determine all permutations
 
-## RAILS SURECAM-API-TEST ROUTES
+## RAILS APP ROUTES
 
 This RESTful API uses a `TodoClient.rb` to interact with the external [JSON Placeholder TODOs API](https://jsonplaceholder.typicode.com/todos) and then provides basic functionality for creating users who can register, login/logout and then create posts and comment on posts. Respective user interaction histories are provided at the user endpoints.
 
