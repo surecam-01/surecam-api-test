@@ -29,7 +29,6 @@ There is a single test file public/permutation_test/permutation01.txt that inclu
 
 ```
          Prefix Verb     URI Pattern                    Controller#Action
-         api_v1          /api/v1(.:format)              api/v1/api#index {:format=>:json}
    api_v1_index          /api/v1/index(.:format)        api/v1/api#index {:format=>:json}
 api_v1_register GET      /api/v1/register(.:format)     api/v1/users#new {:format=>:json}
                 POST     /api/v1/register(.:format)     api/v1/users#create {:format=>:json}
