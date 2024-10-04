@@ -18,12 +18,13 @@ postgres=# GRANT CONNECT ON DATABASE surecam TO surecam;
 
 ## PERMUTATION RAKE TASKS
 
-There is a single test file `public/permutation_test/permutation01.txt` provided includes the same contents as the example file shown in the coding challenge. All rake tasks generate respective command-line output
+There is a single test file `public/permutation_test/permutation01.txt` provided includes the same contents as the example file shown in the coding challenge. All `rake tasks` generate respective command-line `stdout` output.
+
 | COMMAND  | Description |
 | ------------- | ------------- |
-|<sub>`rake permutations:import_files`</sub>| processes all files located in the `public/permutation_test/*` directory |
-|<sub>`rake permutations:read_input -- file=permutation01.txt`</sub>| processes a single input file in the `public/permutation_test/*` directory (hint: you can upload additional files to this directory that match the same format) |
-|<sub>`rake permutations:generate_random`</sub>| generates random string data to determine all permutations|
+|<sub>`rake permutations:read_all`</sub>| processes all files located in the `public/permutation_test/*` directory |
+|<sub>`rake permutations:read_file -- file=permutation01.txt`</sub>| processes a single file that has been uploaded to the `public/permutation_test/*` directory (hint: upload additional files if necessary) |
+|<sub>`rake permutations:read_random`</sub>| generates random string data to determine all permutations|
 
 ## RAILS APP ROUTES
 
