@@ -27,6 +27,8 @@ There is a single test file public/permutation_test/permutation01.txt that inclu
 
 ## RAILS SURECAM-API-TEST ROUTES
 
+This RESTful API uses a `TodoClient.rb` to interact with the external [JSON Placeholder TODOs API](https://jsonplaceholder.typicode.com/todos) and then provides basic functionality for creating users who can register, login/logout and then create posts and comment on posts. Respective user interaction histories are provided at the user endpoints.
+
 ```
          Prefix Verb     URI Pattern                    Controller#Action
    api_v1_index          /api/v1/index(.:format)        api/v1/api#index {:format=>:json}
