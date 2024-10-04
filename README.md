@@ -27,4 +27,4 @@ There is a single test file public/permutation_test/permutation01.txt that inclu
 
 ## POSTMAN HELPER
 
-This collection includes a Postman collection of requests to see interact with the rails api functionality.
+This collection includes a [Postman collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/SURECAM.postman_collection.json) of requests so that one can interact readily with the rails api functionality.
