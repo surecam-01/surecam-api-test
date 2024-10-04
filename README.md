@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository is to satisfy the requirements in the surecam-api-test
 
-Things you may want to cover:
+# POSTGRES COMMANDS
+```
+sudo su - postgres
 
-* Ruby version
 
-* System dependencies
+CREATE USER surecam WITH PASSWORD 'surecam';
+ALTER USER surecam CREATEDB;
+CREATE DATABASE surecam;
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ALTER DATABASE surecam OWNER TO surecam;
+GRANT CONNECT ON DATABASE surecam TO surecam;
+```
