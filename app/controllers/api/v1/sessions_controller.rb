@@ -58,8 +58,8 @@ module Api
           render json: Status.response(400, response.to_json), status: Status::CODES[400]
 
         end
-
       end
+
     end
   end
 end
