@@ -21,7 +21,7 @@ There is a single test file public/permutation_test/permutation01.txt that inclu
 
 `rake permutations:import_files` - processes all files in the `public/permutation_test/*` directory
 
-`ake permutations:read_input -- file=permutation01.txt` - processes a single file in the `public/permutation_test/*` directory
+`ake permutations:read_input -- file=permutation01.txt` - processes a single file in the `public/permutation_test/*` directory (hint: you can upload additional files to this directory that match the same format)
 
 `rake permutations:generate_random` - generates random string data to determine all permutations
 
