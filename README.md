@@ -34,16 +34,16 @@ This RESTful API uses a `TodoClient.rb` to interact with the external [JSON Plac
          Prefix Verb     URI Pattern                    Controller#Action
    api_v1_index          /api/v1/index(.:format)        api/v1/api#index {:format=>:json}
 api_v1_register GET      /api/v1/register(.:format)     api/v1/users#new {:format=>:json}
-                POST     /api/v1/register(.:format)     api/v1/users#create {:format=>:json}
+                PUT|POST /api/v1/register(.:format)     api/v1/users#create {:format=>:json}
    api_v1_users GET      /api/v1/users(.:format)        api/v1/users#index {:format=>:json}
-                GET      /api/v1/users/:id(.:format)    api/v1/users#show {:format=>:json}
+         api_v1 GET      /api/v1/users/:id(.:format)    api/v1/users#show {:format=>:json}
                 DELETE   /api/v1/users(.:format)        api/v1/users#destroy {:format=>:json}
    api_v1_login GET      /api/v1/login(.:format)        api/v1/sessions#new {:format=>:json}
-                POST     /api/v1/login(.:format)        api/v1/sessions#create {:format=>:json}
+                PUT|POST /api/v1/login(.:format)        api/v1/sessions#create {:format=>:json}
   api_v1_logout DELETE   /api/v1/logout(.:format)       api/v1/sessions#destroy {:format=>:json}
-   api_v1_posts POST     /api/v1/posts(.:format)        api/v1/posts#create {:format=>:json}
+   api_v1_posts PUT|POST /api/v1/posts(.:format)        api/v1/posts#create {:format=>:json}
                 DELETE   /api/v1/posts/:id(.:format)    api/v1/posts#destroy {:format=>:json}
-api_v1_comments POST     /api/v1/comments(.:format)     api/v1/comments#create {:format=>:json}
+api_v1_comments PUT|POST /api/v1/comments(.:format)     api/v1/comments#create {:format=>:json}
                 DELETE   /api/v1/comments/:id(.:format) api/v1/comments#destroy {:format=>:json}
    api_v1_todos GET      /api/v1/todos(.:format)        api/v1/todos#index {:format=>:json}
                 PUT|POST /api/v1/todos(.:format)        api/v1/todos#create {:format=>:json}
