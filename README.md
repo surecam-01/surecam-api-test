@@ -25,7 +25,7 @@ There is a single test file public/permutation_test/permutation01.txt that inclu
 
 `rake permutations:generate_random` - generates random string data to determine all permutations
 
-## RAILS APP ROUTES
+## RAILS SURECAM-API-TEST ROUTES
 
 ```
          Prefix Verb     URI Pattern                    Controller#Action
