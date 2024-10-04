@@ -2,7 +2,7 @@
 
 This repository consists of a Ruby on Rails v7.0 RESTful API that intends to satisfy the requirements outlined in the [Surecam Coding Challenge](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SureCam-Coding-test.pdf) document.
 
-## POSTGRES DB & RAILS SETUP COMMANDS
+## POSTGRES DB COMMANDS
 ```
 $ sudo su - postgres
 $ psql
@@ -16,8 +16,16 @@ postgres=# ALTER DATABASE surecam OWNER TO surecam;
 postgres=# GRANT CONNECT ON DATABASE surecam TO surecam;
 
 postgres=# \q
+```
 
-$ rails s -b 0.0.0.0 (or alternatively rails c)
+## RAILS APP SETUP COMMANDS
+```
+$ bundle install
+$ rake db:create
+$ rake db:migrate
+$ rails s -b 0.0.0.0
+-- alternatively --
+$ rails c
 ```
 
 ## PERMUTATION RAKE TASKS
