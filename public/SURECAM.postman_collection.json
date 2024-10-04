@@ -1,0 +1,629 @@
+{
+	"info": {
+		"_postman_id": "2d9d0908-72e9-4fec-bd20-706a81d54a4f",
+		"name": "SURECAM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38750723"
+	},
+	"item": [
+		{
+			"name": "API INDEX",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todos.json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todos.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todo Get: Recent 200",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todos.json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todos.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todo Get: Recent 200 (No Bearer)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todos.json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todos.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todo Put: Create 01",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todos.json?userId=1&completed=true&title=testing 123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todos.json"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "completed",
+							"value": "true"
+						},
+						{
+							"key": "title",
+							"value": "testing 123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todo Put: Create 02",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todos.json?userId=1&completed=true&title=testing 123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todos.json"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "completed",
+							"value": "true"
+						},
+						{
+							"key": "title",
+							"value": "testing 123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todo Put: Not Created",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todos.json?userId=1x&completed=fail&title=intentional_failure",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todos.json"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1x"
+						},
+						{
+							"key": "completed",
+							"value": "fail"
+						},
+						{
+							"key": "title",
+							"value": "intentional_failure"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todo Delete: Good Id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todos.json?id=11111111111111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todos.json"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "11111111111111111"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todo Delete: Bad Id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todos.json?id=11111111111111111x",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todos.json"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "11111111111111111x"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User: Index",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/users.json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 01: Sign Up (No Bearer)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/register?email=new.user2@gmail.com&username=NewUser2&password=test1234&password_confirmation=test1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"register"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "new.user2@gmail.com"
+						},
+						{
+							"key": "username",
+							"value": "NewUser2"
+						},
+						{
+							"key": "password",
+							"value": "test1234"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "test1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 01: Show",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/users/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 01: Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/login?email=new.user1@gmail.com&username=NewUser1&password=test1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "new.user1@gmail.com"
+						},
+						{
+							"key": "username",
+							"value": "NewUser1"
+						},
+						{
+							"key": "password",
+							"value": "test1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 01: Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/logout?id=15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 02: Sign Up (No Bearer)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/register?email=new.user289@gmail.com&username=NewUser289&password=test1234&password_confirmation=test1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"register"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "new.user289@gmail.com"
+						},
+						{
+							"key": "username",
+							"value": "NewUser289"
+						},
+						{
+							"key": "password",
+							"value": "test1234"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "test1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User 02: Show",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/users/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post: Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/posts?title=Test Post 01&raw=<strong>Test Post Bold Content</strong> followed by regular content and an image: <img src=\"https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg\" title=\"happy golden retriever\">&user_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Test Post 01"
+						},
+						{
+							"key": "raw",
+							"value": "<strong>Test Post Bold Content</strong> followed by regular content and an image: <img src=\"https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg\" title=\"happy golden retriever\">"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post: Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/posts/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment: Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdXBlcnVzZXIiOiJwYXNzd29yZCJ9.Sipkv3cegeEZA2vO1Xx3C5bPDIBNcvjWfe8QvRf-hrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/comments?parent_interaction_id=11&raw=<strong>The Bold Response</strong> followed by a quick brown fox that jumps over the lazy dog <img src=\"https://sprezzatura.blog/wp-content/uploads/2020/07/the-quick-brown-fox-jumps-over-the-lazy-dog-is-an-example-of-what.jpg\">&user_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"comments"
+					],
+					"query": [
+						{
+							"key": "parent_interaction_id",
+							"value": "11"
+						},
+						{
+							"key": "raw",
+							"value": "<strong>The Bold Response</strong> followed by a quick brown fox that jumps over the lazy dog <img src=\"https://sprezzatura.blog/wp-content/uploads/2020/07/the-quick-brown-fox-jumps-over-the-lazy-dog-is-an-example-of-what.jpg\">"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
