@@ -23,11 +23,15 @@ postgres=# \q
 $ bundle install
 $ rake db:create
 $ rake db:migrate
+
+-- local server --
+
 $ rails s -b 0.0.0.0
 
--- alternative to navigate inside app --
+-- app console --
 
 $ rails c
+
 ```
 
 ## PERMUTATION RAKE TASKS
