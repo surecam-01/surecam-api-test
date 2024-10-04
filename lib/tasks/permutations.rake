@@ -12,8 +12,8 @@ def parse_options
 end
 
 namespace :permutations do
-    desc "import_files"
-    task :import_files do
+    desc "read_all"
+    task :read_all do
 
       Dir.children(PATH).each do |filename|
 
@@ -28,8 +28,8 @@ namespace :permutations do
       end
     end
 
-    desc "read_input"
-    task :read_input do
+    desc "read_file"
+    task :read_file do
 
       options = parse_options
   
@@ -45,8 +45,8 @@ namespace :permutations do
       end
     end
 
-    desc "generate_random"
-    task :generate_random do
+    desc "read_random"
+    task :read_random do
       # good through 9 characters before timing out
       desired_length = 9
       tests = 5
