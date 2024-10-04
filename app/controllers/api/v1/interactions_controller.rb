@@ -54,8 +54,13 @@ module Api
             if interaction_type == Interaction::TYPE_NAMES[0]
               comments = Comment.where(:parent_interaction_id => params["id"])
               comment_total = comments.length
-              comments.destroy_all
-              response[:message] += " and comments deleted (#{comment_total})"
+              
+              if comment_total > 0
+              
+                comments.destroy_all
+                response[:message] += " and comments deleted (#{comment_total})"
+                
+              end
             end
 
             render json: Status.response(202, response.to_json), status: Status::CODES[202]
