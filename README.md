@@ -1,6 +1,6 @@
 # README
 
-This repository is to satisfy the requirements in the [Surecam Coding Challenge](https://github.com/surecam-01/surecam-api-test/blob/main/public/SureCam-Coding-test.pdf)
+This repository is to satisfy the requirements in the [Surecam Coding Challenge](https://github.com/surecam-01/surecam-api-test/blob/main/public/SureCam-Coding-test.pdf).
 
 ## POSTGRES SETUP COMMANDS
 ```
