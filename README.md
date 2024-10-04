@@ -51,4 +51,4 @@ api_v1_comments POST     /api/v1/comments(.:format)     api/v1/comments#create {
 
 ## POSTMAN COLLECTION
 
-This repository includes a [Postman Collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SURECAM.postman_collection.json) (v2.1.0) with requests that can be imported so that one can interact readily with the basic surecam-api-test RESTful API functionality.
+This repository includes a [Postman Collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SURECAM.postman_collection.json) (v2.1.0) with paramterized requests that can be imported through the [Postman API Platform](https://www.postman.com/downloads/) desktop application. This collection enables one to interact seamelessly with the basic surecam-api-test RESTful API functionality.
