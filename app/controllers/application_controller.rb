@@ -32,7 +32,7 @@ class ApplicationController < ActionController::API
   def valid_bearer_token?
     pattern = /^Bearer /
     header  = request.headers['Authorization']
-    if header && header.match(pattern)
+    if header && header.match(pattern) && header.gsub(pattern, '') == ENV['SUPERUSER_BEARER_TOKEN']
       true
     else 
       false
