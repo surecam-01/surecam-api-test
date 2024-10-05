@@ -7,8 +7,8 @@ This repository consists of a Ruby on Rails v7.0 RESTful API that intends to sat
 $ sudo su - postgres
 $ psql
 
-postgres=#  CREATE USER surecam WITH PASSWORD 'surecam';
-postgres=#  ALTER USER surecam CREATEDB;
+postgres=# CREATE USER surecam WITH PASSWORD 'surecam';
+postgres=# ALTER USER surecam CREATEDB;
 
 postgres=# CREATE DATABASE surecam;
 postgres=# ALTER DATABASE surecam OWNER TO surecam;
