@@ -44,9 +44,11 @@ There is a single test file `public/permutation_test/permutation01.txt` ([source
 |<sub>`rake permutations:read_file -- file=permutation01.txt`</sub>| processes a single file that has been uploaded to the `public/permutation_test/*` directory (hint: upload additional files if needed) |
 |<sub>`rake permutations:read_random`</sub>| generates random string data to determine all permutations|
 
-## RAILS APP ROUTES
+## RAILS APP
 
 This RESTful API uses a [client](https://github.com/surecam-01/surecam-api-test/blob/main/app/clients/todo_client.rb) to interact with the external [JSON Placeholder TODOs API](https://jsonplaceholder.typicode.com/todos) and then provides basic functionality for creating users who can register, login/logout and then create posts & comments. Stored user interaction histories can be consumed at the `api/v1/user` endpoints.
+
+### ROUTES
 
 ```
          Prefix Verb     URI Pattern                    Controller#Action
