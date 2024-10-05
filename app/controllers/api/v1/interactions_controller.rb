@@ -52,9 +52,10 @@ module Api
             response[:message] = "#{interaction_type} with id(#{params["id"]}) deleted"
 
             if interaction_type == Interaction::TYPE_NAMES[0]
-              comments = Comment.where(:parent_interaction_id => params["id"])
-              comment_total = comments.length
-              
+
+              binding.pry
+              comment_total = Interaction.delete_all_descendents(params["id"])
+
               if comment_total > 0
               
                 comments.destroy_all

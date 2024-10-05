@@ -31,4 +31,25 @@ class Interaction < ApplicationRecord
   def parent_post_integrity
     self.errors.add(:base, 'Parent Post does not exist') if !Interaction.exists?(self.parent_interaction_id)
   end
+ 
+  def self.delete_all_descendents(id)
+    count = 0
+    queue = Comment.where(:parent_interaction_id => id).ids
+    count += queue.length
+    done = false
+    while !done do
+      descendent_comments = Comment.where(:parent_interaction_id => queue.shift)
+      queue += descendent_comments.ids
+      count += descendent_comments.ids.length
+
+      descendent_comments.delete_all
+
+      if queue.length == 0
+        done = true
+      end
+
+    end  
+    count
+  end  
+
 end
