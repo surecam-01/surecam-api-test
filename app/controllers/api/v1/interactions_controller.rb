@@ -53,12 +53,10 @@ module Api
 
             if interaction_type == Interaction::TYPE_NAMES[0]
 
-              binding.pry
-              comment_total = Interaction.delete_all_descendents(params["id"])
+              comment_total = Interaction.delete_all_comments(params["id"])
 
               if comment_total > 0
               
-                comments.destroy_all
                 response[:message] += " and comments deleted (#{comment_total})"
                 
               end
