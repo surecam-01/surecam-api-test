@@ -36,7 +36,7 @@ $ rails c
 
 ## PERMUTATION RAKE TASKS
 
-There is a single test file `[public/permutation_test/permutation01.txt](https://github.com/surecam-01/surecam-api-test/blob/main/public/permutation_test/permutation01.txt)` provided which includes the exact same contents as the example file shown in the coding challenge. All `rake tasks` generate respective command-line `stdout` output.
+There is a single test file `public/permutation_test/permutation01.txt` ([source](https://github.com/surecam-01/surecam-api-test/blob/main/public/permutation_test/permutation01.txt)) provided which includes the exact same contents as the example file shown in the coding challenge. All `rake tasks` generate respective command-line `stdout` output.
 
 | COMMAND  | Description |
 | ------------- | ------------- |
