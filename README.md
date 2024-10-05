@@ -2,7 +2,7 @@
 
 This repository consists of a Ruby on Rails v7.0 RESTful API that intends to satisfy the requirements outlined in the [Surecam Coding Challenge](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SureCam-Coding-test.pdf) document.
 
-## POSTGRES DB COMMANDS
+## POSTGRES DB SETUP COMMANDS
 ```
 $ sudo su - postgres
 $ psql
