@@ -76,9 +76,9 @@ api_v1_comments PUT|POST /api/v1/comments(.:format)     api/v1/comments#create {
 * Posts must not have a `:parent_id`
 * Comments must have a `:parent_id`
 * A single post can have many comments
-* Comments can have many nested comments
 * A single post cannot have nested posts
-  
+* Comments can have many nested comments
+
 ## POSTMAN COLLECTION
 
 This repository contains a [Postman Collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SURECAM.postman_collection.json) (v2.1.0) with 18 paramterized requests that can be imported in to the [Postman API Platform](https://www.postman.com/downloads/) desktop application. This collection enables one to interact seamelessly with the basic surecam-api-test RESTful API functionality using a `Bearer <token>` (unless noted). User sessions are also valid for RESTful API interaction without the `Bearer <token>`.
