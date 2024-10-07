@@ -1,5 +1,5 @@
 class ApiResponse
-    INDEX_RESPONSE = {
+    HOME = {
         :title => 'surecam-test-api',
         :base_url => nil,
         :path => nil,

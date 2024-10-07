@@ -9,7 +9,7 @@ module Api
             :routes => routes
           }
 
-          render_response(200, ApiResponse::INDEX_RESPONSE.merge(response).to_json)
+          render_response(200, ApiResponse::HOME.merge(response).to_json)
         end
   
         def routes
