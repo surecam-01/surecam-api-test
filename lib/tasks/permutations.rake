@@ -11,6 +11,10 @@ def parse_options
   options
 end
 
+def generate_permutations(string)
+  string.strip.chars.permutation.map &:join
+end
+
 namespace :permutations do
     desc "read_all"
     task :read_all do
@@ -22,7 +26,7 @@ namespace :permutations do
 
         File.foreach(file_path).with_index do |line, line_num|
            # 1X PERMUTATIONS LOGIC
-           permutations = line.strip.chars.permutation.map &:join
+           permutations =  generate_permutations(line)
            puts permutations.sort.join(",")
         end
       end
@@ -40,7 +44,7 @@ namespace :permutations do
 
       File.readlines(file_path).each_with_index do |line, line_num|
         # 2X PERMUTATIONS LOGIC
-        permutations = line.strip.chars.permutation.map &:join
+        permutations = generate_permutations(line)
         puts permutations.sort.join(",")
       end
     end
@@ -57,7 +61,7 @@ namespace :permutations do
         puts "Input: #{test}"
         puts "========================================"
         # 3X PERMUTATIONS LOGIC
-        permutations = test.strip.chars.permutation.map &:join
+        permutations = generate_permutations(test)
         puts permutations.sort.join(", ")
         puts "\n"
       end
