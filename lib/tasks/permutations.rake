@@ -1,4 +1,4 @@
-PATH = Rails.root.join('public', 'permutation_test')
+PERMUTATIONS_UPLOAD_PATH = Rails.root.join('public', 'permutation_test')
 
 def parse_options
   options = ActiveSupport::HashWithIndifferentAccess.new
@@ -19,9 +19,9 @@ namespace :permutations do
     desc "read_all"
     task :read_all do
 
-      Dir.children(PATH).each do |filename|
+      Dir.children(PERMUTATIONS_UPLOAD_PATH).each do |filename|
 
-        file_path = "#{PATH}/#{filename}"
+        file_path = "#{PERMUTATIONS_UPLOAD_PATH}/#{filename}"
         puts filename
 
         File.foreach(file_path).with_index do |line, line_num|
@@ -39,7 +39,7 @@ namespace :permutations do
   
       filename = options[:file]
 
-      file_path = "#{PATH}/#{filename}"
+      file_path = "#{PERMUTATIONS_UPLOAD_PATH}/#{filename}"
       puts file_path
 
       File.readlines(file_path).each_with_index do |line, line_num|
