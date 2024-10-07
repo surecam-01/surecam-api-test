@@ -1,17 +1,15 @@
 class ApplicationController < ActionController::API
 
-  #helper_method :logged_in?, :current_user
-
   def current_user
     if session[:user_id]
       @user = User.find(session[:user_id])
     end
   end
 
-  def authorized?
+  def authorize
    if !(logged_in? || valid_bearer_token?)
      
-     render json: Status.response(401, {:message => 'Not Authorized, please log in to proceed'}.to_json), status: Status::CODES[401]
+     render_response(401, {:message => 'Not Authorized, please log in to proceed'}.to_json)
   
    end
   end
@@ -37,6 +35,10 @@ class ApplicationController < ActionController::API
     else 
       false
     end
+  end
+
+  def render_response(code, json)
+    render json: Status.response(code, json), status: Status::CODES[code]
   end
 
 end

@@ -1,16 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :authorized?, only: [:index, :show, :destroy]
-
-      def new
-
-        response = {}
-        response[:user] = User.new
-      
-        render json: Status.response(200, response.to_json), status: Status::CODES[200]
-
-      end
+      before_action :authorize, only: [:index, :show, :destroy]
 
       def create
 
@@ -34,13 +25,13 @@ module Api
 
             response[:user].delete('password_digest')
 
-            render json: Status.response(201, response.to_json), status: Status::CODES[201]
+            ender_response(201, response.to_json)
 
           else
 
             response[:message] = "User not created"
 
-            render json: Status.response(422, response.to_json), status: Status::CODES[422]
+            render_response(422, response.to_json)
 
           end
   
@@ -54,7 +45,7 @@ module Api
   
           })
 
-          render json: Status.response(400, response.to_json), status: Status::CODES[400]
+          render_response(400, response.to_json)
 
         end
       end
@@ -63,7 +54,7 @@ module Api
 
         response = User.all.select(:id, :email, :username, :created_at, :updated_at).to_json
 
-        render json: Status.response(200, response), status: Status::CODES[200]
+        render_response(200, response)
   
       end
 
@@ -80,7 +71,7 @@ module Api
           response[:posts] = Post.where(:user_id => params["id"])
           response[:comments] = Comment.where(:user_id => params["id"])
 
-          render json: Status.response(200, response.to_json), status: Status::CODES[200]
+          render_response(200, response.to_json)
         
         rescue Exception => e
 
@@ -93,7 +84,7 @@ module Api
 
           })
     
-          render json: Status.response(400, response.to_json), status: Status::CODES[400]
+          render_response(400, response.to_json)
         
         end
       end
@@ -110,7 +101,7 @@ module Api
   
             response[:message] = "User with id (#{params["id"]}) deleted"
             
-            render json: Status.response(202, response.to_json), status: Status::CODES[202]
+            render_response(202, response.to_json)
 
           else
 
@@ -128,7 +119,7 @@ module Api
 
           })
 
-          render json: Status.response(405, response.to_json), status: Status::CODES[405]
+          render_response(405, response.to_json)
 
         end
 

@@ -14,14 +14,15 @@ class TodoClient
       todo["completed"] = params["completed"]
     
       if ID_MATCH.match?(todo["userId"].to_s) && ["true", "false"].include?(params["completed"])
-        HTTParty.post(BASE_URL, todo)
-  
+        data = HTTParty.post(BASE_URL, todo)
+
         {
           :base_url => BASE_URL,
           :status => Status::CODES[200],
           :code => 200,
           :message => "Todo created",
-          :todo => todo
+          :todo => todo,
+          :data => data
         }
 
       else
@@ -47,7 +48,14 @@ class TodoClient
   
   # despite different prefix, end controller method name with familiar action
   def recent_200
-    HTTParty.get(BASE_URL)
+    data = JSON.parse(HTTParty.get(BASE_URL).body)
+    {
+      :base_url => BASE_URL,
+      :status => Status::CODES[200],
+      :code => 200,
+      :message => "Most recent 200 retrieved",
+      :data => data
+    }
   end
   
   def delete(id)
@@ -58,13 +66,14 @@ class TodoClient
         raise StandardError, "id not a number"
       end
   
-      HTTParty.delete("#{BASE_URL}/#{id}")
+      data = HTTParty.delete("#{BASE_URL}/#{id}")
   
       { 
         :base_url => BASE_URL,
         :status => Status::CODES[202],
         :code => 202,
-        :message => "Todo with id (#{id}) deleted"
+        :message => "Todo with id (#{id}) deleted",
+        :data => data
       }
     rescue Exception => e
       { 

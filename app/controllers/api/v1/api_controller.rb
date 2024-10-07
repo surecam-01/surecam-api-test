@@ -1,27 +1,15 @@
 module Api
     module V1
       class ApiController < ApplicationController
-
-        INDEX_RESPONSE = {
-          :status => :ok,
-          :code => 200,
-          :content => 'application/json',
-          :title => 'surecam-test-api',
-          :version => 'v1',
-          :domain => nil,
-          :api => 'api/v1',
-          :developer => 'William Morgan',
-          :timestamp => nil
-        }
   
         def index
           response = { 
-            :domain => request.domain,
-            :timestamp => Time.now,
+            :base_url => request.host_with_port,
+            :path => request.fullpath.split("/")[0..2].join("/"),
             :routes => routes
           }
 
-          render json:  JSON.pretty_generate(INDEX_RESPONSE.merge(response)), status: Status::CODES[200]
+          render_response(200, ApiResponse::INDEX_RESPONSE.merge(response).to_json)
         end
   
         def routes
@@ -35,7 +23,9 @@ module Api
           end.uniq.select do |path|
 
             if /api\/v1/.match?(path)
+
               path.gsub('(.:format)', '')
+            
             end
 
           end

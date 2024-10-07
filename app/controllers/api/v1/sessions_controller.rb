@@ -4,22 +4,22 @@ module Api
   
       def create
 
-        user = User.find_by(email: params[:email])
+        @user = User.find_by(email: params[:email])
         response = {}
 
-        if user.present? && user.authenticate(params[:password])
+        if @user.present? && @user.authenticate(params[:password])
 
-          session[:user_id] = user.id
+          session[:user_id] = @user.id
   
           response[:message] = "Successfully logged in"
 
-          render json: Status.response(200, response.to_json), status: Status::CODES[200]
+          render_response(200, response.to_json)
 
         else
 
           response[:message] = "Invalid email or password"
 
-          render json: Status.response(403, response.to_json), status: Status::CODES[403]
+          render_response(403, response.to_json)
 
         end
 
@@ -35,7 +35,7 @@ module Api
             
             response[:message] = "User with id (#{params["id"]}) signed out"
 
-            render json: Status.response(200, response.to_json), status: Status::CODES[200]
+            render_response(200, response.to_json)
 
           else
 
@@ -52,7 +52,7 @@ module Api
 
           })
 
-          render json: Status.response(400, response.to_json), status: Status::CODES[400]
+          render_response(400, response.to_json)
 
         end
       end

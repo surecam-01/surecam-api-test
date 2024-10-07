@@ -1,7 +1,7 @@
 module Api
   module V1
     class InteractionsController < ApplicationController
-      before_action :authorized?
+      before_action :authorize
 
       def create
         response = {}
@@ -22,7 +22,7 @@ module Api
 
             response[:message] = "#{@interaction.type} (#{@interaction.id}) created"
 
-            render json: Status.response(201, response.to_json), status: Status::CODES[201]
+            render_response(201, response.to_json)
           else
             raise StandardError, "Interaction could not be saved"
           end
@@ -35,7 +35,7 @@ module Api
             :backtrace => e.backtrace
           })
         
-          render json: Status.response(422, response.to_json), status: Status::CODES[422]
+          render_response(422, response.to_json)
         
         end
       end
@@ -49,9 +49,9 @@ module Api
         begin
 
           if @interaction.destroy
-            response[:message] = "#{interaction_type} with id(#{params["id"]}) deleted"
+            response[:message] = "#{interaction_type} with id (#{params["id"]}) deleted"
 
-            if interaction_type == Interaction::TYPE_NAMES[0]
+            if interaction_type.downcase == Interaction::TYPE_NAMES[0].downcase
 
               comment_total = Interaction.delete_all_comments(params["id"])
 
@@ -62,7 +62,7 @@ module Api
               end
             end
 
-            render json: Status.response(202, response.to_json), status: Status::CODES[202]
+            render_response(202, response.to_json)
 
           else
 
@@ -72,12 +72,12 @@ module Api
         rescue Exception => e
 
           response.merge!({
-            :message => "#{interaction_type} with id(#{params["id"]}) not deleted",
+            :message => "#{interaction_type} with id (#{params["id"]}) not deleted",
             :details => e,
             :backtrace => e.backtrace
           })
 
-          render json: Status.response(405, response.to_json), status: Status::CODES[405]
+          render_response(405, response.to_json)
 
         end
       end
