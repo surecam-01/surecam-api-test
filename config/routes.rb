@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
       constraints format: :json do
         
-        match '/index', :to => "api#index", :via => :all
+        match '/index', :to => "main#index", :via => :all
 
         match "/register", :to => "users#new", :via => :get
         match "/register", :to => "users#create", :via => [:put, :post]

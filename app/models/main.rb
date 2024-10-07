@@ -1,5 +1,5 @@
-class ApiResponse
-    HOME = {
+class Main
+    RESPONSE = {
         :title => 'surecam-test-api',
         :base_url => nil,
         :path => nil,

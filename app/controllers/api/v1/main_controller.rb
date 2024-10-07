@@ -1,6 +1,6 @@
 module Api
     module V1
-      class ApiController < ApplicationController
+      class MainController < ApplicationController
   
         def index
           response = { 
@@ -9,7 +9,7 @@ module Api
             :routes => routes
           }
 
-          render_response(200, ApiResponse::HOME.merge(response).to_json)
+          render_response(200, Main::RESPONSE.merge(response).to_json)
         end
   
         def routes

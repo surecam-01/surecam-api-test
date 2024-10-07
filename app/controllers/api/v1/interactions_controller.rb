@@ -57,7 +57,7 @@ module Api
 
               if comment_total > 0
               
-                response[:message] += " and comments deleted (#{comment_total})"
+                response[:message] += " and nested comment#{comment_total > 1 ? "s":""} deleted (#{comment_total})"
                 
               end
             end
