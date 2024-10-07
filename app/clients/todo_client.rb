@@ -21,8 +21,7 @@ class TodoClient
           :status => Status::CODES[200],
           :code => 200,
           :message => "Todo created",
-          :todo => todo,
-          :data => data
+          :todo => data.merge!(todo)
         }
 
       else
