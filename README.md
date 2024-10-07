@@ -52,7 +52,7 @@ This RESTful API uses a [client](https://github.com/surecam-01/surecam-api-test/
 
 ```
          Prefix Verb     URI Pattern                    Controller#Action
-   api_v1_index          /api/v1/index(.:format)        api/v1/api#index {:format=>:json}
+   api_v1_index          /api/v1/index(.:format)        api/v1/main#index {:format=>:json}
 api_v1_register GET      /api/v1/register(.:format)     api/v1/users#new {:format=>:json}
                 PUT|POST /api/v1/register(.:format)     api/v1/users#create {:format=>:json}
    api_v1_users GET      /api/v1/users(.:format)        api/v1/users#index {:format=>:json}
@@ -68,8 +68,17 @@ api_v1_comments PUT|POST /api/v1/comments(.:format)     api/v1/comments#create {
    api_v1_todos GET      /api/v1/todos(.:format)        api/v1/todos#index {:format=>:json}
                 PUT|POST /api/v1/todos(.:format)        api/v1/todos#create {:format=>:json}
                 DELETE   /api/v1/todos(.:format)        api/v1/todos#destroy {:format=>:json}
+
 ```
 
+### INTERACTION RULESET
+
+* Posts must not have a `:parent_id`
+* Comments must have a `:parent_id`
+* A single post can have many comments
+* Comments can have many nested comments
+* A single post cannot have nested posts
+  
 ## POSTMAN COLLECTION
 
 This repository contains a [Postman Collection](https://github.com/surecam-01/surecam-api-test/blob/main/public/default/SURECAM.postman_collection.json) (v2.1.0) with 18 paramterized requests that can be imported in to the [Postman API Platform](https://www.postman.com/downloads/) desktop application. This collection enables one to interact seamelessly with the basic surecam-api-test RESTful API functionality using a `Bearer <token>` (unless noted). User sessions are also valid for RESTful API interaction without the `Bearer <token>`.
