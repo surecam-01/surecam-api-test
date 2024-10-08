@@ -68,7 +68,7 @@ api_v1_comments PUT|POST /api/v1/comments(.:format)     api/v1/comments#create {
 * Posts must not have a `:parent_interaction_id`
 * A single post may have many comments
 * A single post cannot have nested `posts`
-* Comments must have a valid `post` or `comment` `:parent_interaction_id`
+* Comments must have a valid post or comment `:parent_interaction_id`
 * Comments may have many nested comments
 
 ### PERMUTATION RAKE TASKS
