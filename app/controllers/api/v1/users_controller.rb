@@ -14,24 +14,26 @@ module Api
           @user.user_type = :registered
 
           if @user.save!
+            user_attributes = @user.attributes.clone
+            user_attributes.delete('user_type')
 
             response.merge!({
 
               :message => "User successfully created",
-              :user => @user.attributes.clone,
-              :jwt => JWT.encode({user_id: @user.id}, ENV['JWT_SECRET'], 'HS256')
+              :user => user_attributes,
+              :jwt => JWT.encode({user_id: @user.id}, ENV['JWT_SECRET'], 'HS256') # for future use
 
             })
 
             response[:user].delete('password_digest')
 
-            ender_response(201, response.to_json)
+            render_response(201, response)
 
           else
 
             response[:message] = "User not created"
 
-            render_response(422, response.to_json)
+            render_response(422, response)
 
           end
   
@@ -45,14 +47,14 @@ module Api
   
           })
 
-          render_response(400, response.to_json)
+          render_response(400, response)
 
         end
       end
 
       def index
 
-        response = User.all.select(:id, :email, :username, :created_at, :updated_at).to_json
+        response = User.all.select(:id, :email, :username, :created_at, :updated_at)
 
         render_response(200, response)
   
@@ -71,7 +73,7 @@ module Api
           response[:posts] = Post.where(:user_id => params["id"])
           response[:comments] = Comment.where(:user_id => params["id"])
 
-          render_response(200, response.to_json)
+          render_response(200, response)
         
         rescue Exception => e
 
@@ -84,7 +86,7 @@ module Api
 
           })
     
-          render_response(400, response.to_json)
+          render_response(400, response)
         
         end
       end
@@ -101,7 +103,7 @@ module Api
   
             response[:message] = "User with id (#{params["id"]}) deleted"
             
-            render_response(202, response.to_json)
+            render_response(202, response)
 
           else
 
@@ -119,7 +121,7 @@ module Api
 
           })
 
-          render_response(405, response.to_json)
+          render_response(405, response)
 
         end
 

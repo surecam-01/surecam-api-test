@@ -13,13 +13,13 @@ module Api
   
           response[:message] = "Successfully logged in"
 
-          render_response(200, response.to_json)
+          render_response(200, response)
 
         else
 
           response[:message] = "Invalid email or password"
 
-          render_response(403, response.to_json)
+          render_response(403, response)
 
         end
 
@@ -35,7 +35,7 @@ module Api
             
             response[:message] = "User with id (#{params["id"]}) signed out"
 
-            render_response(200, response.to_json)
+            render_response(200, response)
 
           else
 
@@ -52,7 +52,7 @@ module Api
 
           })
 
-          render_response(400, response.to_json)
+          render_response(400, response)
 
         end
       end

@@ -22,7 +22,7 @@ module Api
 
             response[:message] = "#{@interaction.type} (#{@interaction.id}) created"
 
-            render_response(201, response.to_json)
+            render_response(201, response)
           else
             raise StandardError, "Interaction could not be saved"
           end
@@ -35,7 +35,7 @@ module Api
             :backtrace => e.backtrace
           })
         
-          render_response(422, response.to_json)
+          render_response(422, response)
         
         end
       end
@@ -57,12 +57,12 @@ module Api
 
               if comment_total > 0
               
-                response[:message] += " and nested comment#{comment_total > 1 ? "s":""} deleted (#{comment_total})"
+                response[:message] += " and (#{comment_total}) nested comment#{comment_total > 1 ? "s":""} also deleted"
                 
               end
             end
 
-            render_response(202, response.to_json)
+            render_response(202, response)
 
           else
 
@@ -77,7 +77,7 @@ module Api
             :backtrace => e.backtrace
           })
 
-          render_response(405, response.to_json)
+          render_response(405, response)
 
         end
       end

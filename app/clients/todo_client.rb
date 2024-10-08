@@ -2,7 +2,6 @@ class TodoClient
   include HTTParty
   
   BASE_URL = "http://jsonplaceholder.typicode.com/todos"
-  ID_MATCH = /^[0-9]*$/ # allowing for any number
   
   def create(params)
     begin
@@ -13,12 +12,12 @@ class TodoClient
       todo["userId"] = params["userId"]
       todo["completed"] = params["completed"]
     
-      if ID_MATCH.match?(todo["userId"].to_s) && ["true", "false"].include?(params["completed"])
+      if Todo::NUMERIC_STRING.match?(todo["userId"].to_s) && Todo::BOOLEAN_STRINGS.include?(params["completed"])
         data = HTTParty.post(BASE_URL, todo)
 
         {
           :base_url => BASE_URL,
-          :status => Status::CODES[200],
+          :status => Status::MESSAGES[200],
           :code => 200,
           :message => "Todo created",
           :todo => data.merge!(todo)
@@ -31,7 +30,7 @@ class TodoClient
 
       {
         :base_url => BASE_URL,
-        :status => Status::CODES[422],
+        :status => Status::MESSAGES[422],
         :code => 422,
         :message => "Todo not created",
         :todo => todo,
@@ -50,7 +49,7 @@ class TodoClient
     data = JSON.parse(HTTParty.get(BASE_URL).body)
     {
       :base_url => BASE_URL,
-      :status => Status::CODES[200],
+      :status => Status::MESSAGES[200],
       :code => 200,
       :message => "Most recent 200 retrieved",
       :data => data
@@ -61,7 +60,7 @@ class TodoClient
   
     begin
 
-      if !ID_MATCH.match?(id.to_s)
+      if !Todo::NUMERIC_STRING.match?(id.to_s)
         raise StandardError, "id not a number"
       end
   
@@ -69,7 +68,7 @@ class TodoClient
   
       { 
         :base_url => BASE_URL,
-        :status => Status::CODES[202],
+        :status => Status::MESSAGES[202],
         :code => 202,
         :message => "Todo with id (#{id}) deleted",
         :data => data
@@ -77,7 +76,7 @@ class TodoClient
     rescue Exception => e
       { 
         :base_url => BASE_URL,
-        :status => Status::CODES[405],
+        :status => Status::MESSAGES[405],
         :code => 405,
         :message => "Todo with id (#{id}) not deleted",
         :details => e

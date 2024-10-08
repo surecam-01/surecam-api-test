@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_02_223557) do
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
     t.string "password_digest", default: "", null: false
-    t.string "user_type", default: "1"
+    t.string "user_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

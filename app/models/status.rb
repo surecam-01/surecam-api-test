@@ -3,7 +3,7 @@ class Status
   include ActionController::MimeResponds
   require 'json'
    
-  CODES = {
+  MESSAGES = {
     100 => :continue, 101 => :switching_protocols, 102 => :processing,
     200 => :ok, 201 => :created, 202 => :accepted, 203 => :non_authoritative_information, 204 => :no_content, 205 => :reset_content, 206 => :partial_content, 207 => :multi_status, 226 => :im_used,
     300 => :multiple_choices, 301 => :moved_permanently, 302 => :found, 303 => :see_other, 304 => :not_modified, 305 => :use_proxy, 307 => :temporary_redirect,
@@ -21,12 +21,14 @@ class Status
     
   def self.response(code, body)
     response = Marshal.load(Marshal.dump(RESPONSE)).merge!({
-        :status => Status::CODES[code],
+        :status => Status::MESSAGES[code],
         :code => code,
         :"content-type" => 'application/json'
     })
     
-    parsed_body = JSON.parse(body)
+
+    parsed_body = JSON.parse(body.to_json)
+  
     if parsed_body.is_a?(Hash) && parsed_body.keys.include?("backtrace")
       filtered_backtrace = parsed_body["backtrace"].select do |path|
       if /api\/v1/.match?(path)

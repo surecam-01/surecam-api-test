@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
   def authorize
    if !(logged_in? || valid_bearer_token?)
      
-     render_response(401, {:message => 'Not Authorized, please log in to proceed'}.to_json)
+     render_response(401, {:message => 'Not Authorized, please login to proceed'})
   
    end
   end
@@ -37,8 +37,8 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def render_response(code, json)
-    render json: Status.response(code, json), status: Status::CODES[code]
+  def render_response(code, data)
+    render json: Status.response(code, data), status: Status::MESSAGES[code]
   end
 
 end

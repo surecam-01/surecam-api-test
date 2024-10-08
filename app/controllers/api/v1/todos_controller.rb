@@ -7,7 +7,7 @@ module Api
   
          tc_response = TodoClient.new.create(params)
   
-         render_response(202, tc_response.to_json)
+         render_response(202, tc_response)
   
        end
 
@@ -15,7 +15,7 @@ module Api
   
          tc_response = TodoClient.new.recent_200
   
-         render_response(202, tc_response.to_json)
+         render_response(202, tc_response)
   
        end
   
@@ -23,7 +23,7 @@ module Api
   
          tc_response = TodoClient.new.delete(params["id"])
   
-         render_response(202, tc_response.to_json)
+         render_response(202, tc_response)
   
        end
   
