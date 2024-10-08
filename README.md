@@ -75,10 +75,10 @@ api_v1_comments PUT|POST /api/v1/comments(.:format)     api/v1/comments#create {
 
 Posts and Comments are implemented using Single Table Inheritance (STI) and the `Interaction` object. Here are the constraints:
 
-* Posts must not have a `:parent_id`
+* Posts must not have a `:parent_interaction_id`
 * A single post can have many comments
 * A single post cannot have nested posts
-* Comments must have a `:parent_id`
+* Comments must have a `:parent_interaction_id`
 * Comments can have many nested comments
 
 ## POSTMAN COLLECTION
