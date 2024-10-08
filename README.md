@@ -34,19 +34,9 @@ $ rails c
 
 ```
 
-## PERMUTATION RAKE TASKS
-
-There is a single test file `public/permutation_test/permutation01.txt` ([source](https://github.com/surecam-01/surecam-api-test/blob/main/public/permutation_test/permutation01.txt)) provided which includes the exact same contents as the example file shown in the coding challenge. All `rake tasks` generate respective command-line `stdout` output.
-
-| COMMAND  | Description |
-| ------------- | ------------- |
-|<sub>`rake permutations:read_all`</sub>| processes all files located in the `public/permutation_test/*` directory |
-|<sub>`rake permutations:read_file -- file=permutation01.txt`</sub>| processes a single file that has been uploaded to the `public/permutation_test/*` directory (hint: upload additional files if needed) |
-|<sub>`rake permutations:read_random`</sub>| generates random string data to determine all permutations|
-
 ## RAILS APP
 
-This RESTful API uses a [client](https://github.com/surecam-01/surecam-api-test/blob/main/app/clients/todo_client.rb) to interact with the external [JSON Placeholder TODOs API](https://jsonplaceholder.typicode.com/todos) and then provides basic functionality for creating users who can register, login/logout and then create posts & comments. Stored user interaction histories can be consumed at the `api/v1/user` endpoints.
+This RESTful API uses a [client](https://github.com/surecam-01/surecam-api-test/blob/main/app/clients/todo_client.rb) to interact with the external [JSON Placeholder TODOs API](https://jsonplaceholder.typicode.com/todos) and then provides basic functionality for creating users who can register, login/logout and create posts & comments. Stored user interaction histories can be consumed at the `api/v1/user` endpoints.
 
 ### ROUTES
 
@@ -71,15 +61,25 @@ api_v1_comments PUT|POST /api/v1/comments(.:format)     api/v1/comments#create {
 
 ```
 
-### INTERACTION RULESET
+### INTERACTION MODEL & RULESET
 
-Posts and Comments are implemented using Single Table Inheritance (STI) and the `Interaction` object. Here are the constraints:
+`Posts` and `Comments` are implemented using the `Interaction` object and Single Table Inheritance (STI). Here are the constraints:
 
 * Posts must not have a `:parent_interaction_id`
 * A single post can have many comments
 * A single post cannot have nested posts
 * Comments must have a `:parent_interaction_id`
 * Comments can have many nested comments
+
+### PERMUTATION RAKE TASKS
+
+There is a single test file `public/permutation_test/permutation01.txt` provided ([source](https://github.com/surecam-01/surecam-api-test/blob/main/public/permutation_test/permutation01.txt)) which includes the same contents used as the example file in the coding challenge. All `rake tasks` generate respective command-line `stdout` output.
+
+| COMMAND  | Description |
+| ------------- | ------------- |
+|<sub>`rake permutations:read_all`</sub>| processes all files located in the `public/permutation_test/*` directory |
+|<sub>`rake permutations:read_file -- file=permutation01.txt`</sub>| processes a single file that has been uploaded to the `public/permutation_test/*` directory (hint: upload additional files if needed) |
+|<sub>`rake permutations:read_random`</sub>| generates random string data to determine all permutations|
 
 ## POSTMAN COLLECTION
 
