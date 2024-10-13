@@ -15,22 +15,22 @@ class Interaction < ApplicationRecord
     self.sanitized = Interaction.sanitizer(self.raw)
   end
 
-  def descendents 
-    descendents = Comment.where(:parent_interaction_id => self.id)
-    queue = descendents.ids 
+  def descendants 
+    descendants = Comment.where(:parent_interaction_id => self.id)
+    queue = descendants.ids 
     done = false
     while !done do
-      nested_descendents = Comment.where(:parent_interaction_id => queue.shift)
+      nested_descendants = Comment.where(:parent_interaction_id => queue.shift)
 
-      descendents += nested_descendents
-      queue += nested_descendents.ids
+      descendants += nested_descendants
+      queue += nested_descendants.ids
 
       if queue.length == 0
         done = true
       end
 
     end  
-    descendents
+    descendants
   end
   
 
