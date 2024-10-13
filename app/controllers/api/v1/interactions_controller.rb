@@ -45,6 +45,7 @@ module Api
         response = {}
 
         @interaction = Interaction.find(params["id"])
+        descendents = @interaction.descendents
 
         begin
 
@@ -53,7 +54,7 @@ module Api
 
             if interaction_type.downcase == Interaction::TYPE_NAMES[0].downcase
 
-              comment_total = Interaction.delete_all_comments(params["id"])
+              comment_total = Interaction.batch_delete(descendents)
 
               if comment_total > 0
               
