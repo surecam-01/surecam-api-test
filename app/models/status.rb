@@ -14,7 +14,7 @@ class Status
   RESPONSE = {
     :status => nil,
     :code => nil,
-    :"content-type" => nil,
+    :'content-type' => 'application/json',
     :body => nil,
     :timestamp => nil
   }
@@ -22,8 +22,7 @@ class Status
   def self.response(code, body)
     response = Marshal.load(Marshal.dump(RESPONSE)).merge!({
         :status => Status::MESSAGES[code],
-        :code => code,
-        :"content-type" => 'application/json'
+        :code => code
     })
     
 
